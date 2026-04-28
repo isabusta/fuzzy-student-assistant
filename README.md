@@ -2,7 +2,7 @@
 
 A fuzzy logic-based decision-support tool that helps students decide whether they should study or take a break, while also estimating exam readiness.
 
-This project was developed as a Design Science Research artifact and implements a Mamdani Fuzzy Inference System in Python. The system is designed to support study decisions under uncertainty by using vague, human-like inputs such as tiredness, workload, deadline proximity, and understanding of the material. [file:2]
+This project was developed as a Design Science Research artifact and implements a Mamdani Fuzzy Inference System in Python. The system is designed to support study decisions under uncertainty by using vague, human-like inputs such as tiredness, workload, deadline proximity, and understanding of the material. 
 
 ## Project idea
 
