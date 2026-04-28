@@ -1,0 +1,163 @@
+{% extends "base.html" %}
+
+{% block title %}Fuzzy Study Assistant{% endblock %}
+
+{% block content %}
+<main class="page">
+  <section class="app-shell">
+    <header class="topbar">
+      <span class="eyebrow">Fuzzy study assistant</span>
+      <h1>Step-by-step study decision wizard</h1>
+      <p>
+        Fill in one section at a time. The system will collect your inputs,
+        run the fuzzy model, and show your recommendation.
+      </p>
+
+      <div class="progress">
+        <div class="progress-step active" id="step-indicator-0">1. Context</div>
+        <div class="progress-step" id="step-indicator-1">2. Study inputs</div>
+        <div class="progress-step" id="step-indicator-2">3. Review</div>
+        <div class="progress-step" id="step-indicator-3">4. Results</div>
+      </div>
+    </header>
+
+    <section class="window active" id="window-0">
+      <h2>Context inputs</h2>
+      <p class="window-intro">Add your courses and deadlines first.</p>
+
+      <div class="form-grid">
+        <div class="input-group full">
+          <label for="courses">Courses</label>
+          <textarea id="courses" placeholder="Example: Data Mining, AI Ethics"></textarea>
+        </div>
+
+        <div class="input-group full">
+          <label for="deadlines">Deadlines</label>
+          <textarea id="deadlines" placeholder="Example: Quiz Friday, report next Monday"></textarea>
+        </div>
+      </div>
+
+      <div class="nav">
+        <div class="nav-left"></div>
+        <div class="nav-right">
+          <button class="btn-primary" onclick="nextWindow()">Next</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="window" id="window-1">
+      <h2>Study inputs</h2>
+      <p class="window-intro">Enter the 4 core fuzzy inputs.</p>
+
+      <div class="card-grid">
+        <div class="slider-box">
+          <div class="slider-head">
+            <label for="tiredness">Tiredness</label>
+            <span class="slider-value" id="tirednessValue">5</span>
+          </div>
+          <input id="tiredness" type="range" min="0" max="10" value="5" oninput="updateValue('tiredness')">
+          <div class="helper">0 = rested, 10 = exhausted</div>
+        </div>
+
+        <div class="slider-box">
+          <div class="slider-head">
+            <label for="workload">Workload</label>
+            <span class="slider-value" id="workloadValue">5</span>
+          </div>
+          <input id="workload" type="range" min="0" max="10" value="5" oninput="updateValue('workload')">
+          <div class="helper">0 = light, 10 = heavy</div>
+        </div>
+
+        <div class="slider-box">
+          <div class="slider-head">
+            <label for="deadline">Deadline proximity</label>
+            <span class="slider-value" id="deadlineValue">5</span>
+          </div>
+          <input id="deadline" type="range" min="0" max="10" value="5" oninput="updateValue('deadline')">
+          <div class="helper">0 = far away, 10 = very close</div>
+        </div>
+
+        <div class="slider-box">
+          <div class="slider-head">
+            <label for="understanding">Understanding</label>
+            <span class="slider-value" id="understandingValue">5</span>
+          </div>
+          <input id="understanding" type="range" min="0" max="10" value="5" oninput="updateValue('understanding')">
+          <div class="helper">0 = low, 10 = high</div>
+        </div>
+      </div>
+
+      <div class="nav">
+        <div class="nav-left">
+          <button class="btn-secondary" onclick="prevWindow()">Back</button>
+        </div>
+        <div class="nav-right">
+          <button class="btn-primary" onclick="nextWindow()">Next</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="window" id="window-2">
+      <h2>Review inputs</h2>
+      <p class="window-intro">Check everything before running the model.</p>
+
+      <div class="review-list">
+        <div class="review-item"><strong>Courses</strong><span class="muted" id="reviewCourses">Not provided</span></div>
+        <div class="review-item"><strong>Deadlines</strong><span class="muted" id="reviewDeadlines">Not provided</span></div>
+        <div class="review-item"><strong>Tiredness</strong><span class="muted" id="reviewTiredness">5</span></div>
+        <div class="review-item"><strong>Workload</strong><span class="muted" id="reviewWorkload">5</span></div>
+        <div class="review-item"><strong>Deadline proximity</strong><span class="muted" id="reviewDeadline">5</span></div>
+        <div class="review-item"><strong>Understanding</strong><span class="muted" id="reviewUnderstanding">5</span></div>
+      </div>
+
+      <div class="nav">
+        <div class="nav-left">
+          <button class="btn-secondary" onclick="prevWindow()">Back</button>
+        </div>
+        <div class="nav-right">
+          <button class="btn-ghost" onclick="resetWizard()">Reset</button>
+          <button class="btn-primary" onclick="runAndOpenResults()">Run analysis</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="window" id="window-3">
+      <h2>Results</h2>
+      <p class="window-intro">Your fuzzy recommendation and explanation.</p>
+
+      <div class="metric-grid">
+        <div class="metric">
+          <div class="metric-label">Study score</div>
+          <div class="metric-value" id="studyScore">--</div>
+        </div>
+
+        <div class="metric">
+          <div class="metric-label">Readiness</div>
+          <div class="metric-value" id="readinessScore">--</div>
+        </div>
+      </div>
+
+      <div class="result-box">
+        <strong>Suggested action</strong>
+        <div class="result-action" id="action">No result yet</div>
+      </div>
+
+      <div class="subcard">
+        <h3>Activated rules</h3>
+        <ul class="rules" id="rules">
+          <li>No rules yet.</li>
+        </ul>
+      </div>
+
+      <div class="nav">
+        <div class="nav-left">
+          <button class="btn-secondary" onclick="goToWindow(2)">Back</button>
+        </div>
+        <div class="nav-right">
+          <button class="btn-ghost" onclick="resetWizard()">Start again</button>
+        </div>
+      </div>
+    </section>
+  </section>
+</main>
+{% endblock %}
