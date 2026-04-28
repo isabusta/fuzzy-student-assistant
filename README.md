@@ -13,7 +13,7 @@ Students often make study decisions using subjective thoughts such as:
 - “My workload is heavy.”
 - “I understand the material well.”
 
-These situations are difficult to model with crisp thresholds. Fuzzy logic makes it possible to represent them with gradual membership values and generate smoother, more interpretable recommendations. [file:2]
+These situations are difficult to model with crisp thresholds. Fuzzy logic makes it possible to represent them with gradual membership values and generate smoother, more interpretable recommendations.
 
 ## Goal
 
@@ -21,32 +21,32 @@ The goal of this project is to build an interpretable fuzzy decision-support sys
 
 - Recommends whether a student should study or take a break.
 - Estimates exam readiness.
-- Provides transparent rule-based explanations for the output. [file:2]
+- Provides transparent rule-based explanations for the output. 
 
 ## Features
 
-- Mamdani Fuzzy Inference System implementation in Python. [file:2]
-- Linguistic input variables with triangular and trapezoidal membership functions. [file:2]
-- Human-readable fuzzy rule base. [file:2]
-- Centroid defuzzification. [file:2]
-- Simple user interface for entering input values and viewing results. [file:2]
-- Explanation panel showing activated rules. [file:2]
+- Mamdani Fuzzy Inference System implementation in Python. 
+- Linguistic input variables with triangular and trapezoidal membership functions. 
+- Human-readable fuzzy rule base.
+- Centroid defuzzification. 
+- Simple user interface for entering input values and viewing results.
+- Explanation panel showing activated rules. 
 
 ## Inputs
 
 The current core model uses four input variables:
 
-1. **Tiredness**: low, medium, high. [file:2]
-2. **Workload**: light, moderate, heavy. [file:2]
-3. **Deadline proximity**: far, close, very close. [file:2]
-4. **Understanding of material**: low, medium, high. [file:2]
+1. **Tiredness**: low, medium, high.
+2. **Workload**: light, moderate, heavy. 
+3. **Deadline proximity**: far, close, very close.
+4. **Understanding of material**: low, medium, high.
 
 ## Outputs
 
 The system produces two main outputs:
 
-1. **Study recommendation** on a scale from 0 to 10, ranging from taking a break to strongly studying. [file:2]
-2. **Exam readiness**, represented using fuzzy levels such as low, medium, and high. [file:2]
+1. **Study recommendation** on a scale from 0 to 10, ranging from taking a break to strongly studying.
+2. **Exam readiness**, represented using fuzzy levels such as low, medium, and high. 
 
 Depending on the interface version, the result may also be shown as a suggested action such as:
 
@@ -56,20 +56,20 @@ Depending on the interface version, the result may also be shown as a suggested 
 
 ## Method
 
-The project uses a **single Mamdani Fuzzy Inference System**, which was chosen to keep the artifact manageable while still demonstrating core fuzzy reasoning principles. [file:2]
+The project uses a **single Mamdani Fuzzy Inference System**, which was chosen to keep the artifact manageable while still demonstrating core fuzzy reasoning principles. 
 
 Main components:
 
-- Fuzzification of input values using membership functions. [file:2]
-- Rule evaluation using interpretable IF-THEN rules. [file:2]
+- Fuzzification of input values using membership functions. 
+- Rule evaluation using interpretable IF-THEN rules.
 - Aggregation of rule outputs.
-- Defuzzification using the centroid method. [file:2]
+- Defuzzification using the centroid method. 
 
 Example fuzzy rules include:
 
-- IF deadline is very close AND understanding is low THEN recommendation is strongly study. [file:2]
-- IF tiredness is high AND deadline is far THEN recommendation is take a break. [file:2]
-- IF understanding is high AND workload is light THEN readiness is high. [file:2]
+- IF deadline is very close AND understanding is low THEN recommendation is strongly study.
+- IF tiredness is high AND deadline is far THEN recommendation is take a break. 
+- IF understanding is high AND workload is light THEN readiness is high. 
 
 ## Project structure
 
