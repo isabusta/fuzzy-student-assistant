@@ -47,7 +47,7 @@
 
     <section class="window" id="window-1">
       <h2>Study inputs</h2>
-      <p class="window-intro">Enter the 4 core fuzzy inputs.</p>
+      <p class="window-intro">Enter the 6 core fuzzy inputs.</p>
 
       <div class="card-grid">
         <div class="slider-box">
@@ -85,6 +85,24 @@
           <input id="understanding" type="range" min="0" max="10" value="5" oninput="updateValue('understanding')">
           <div class="helper">0 = low, 10 = high</div>
         </div>
+
+    <div class="slider-box">
+          <div class="slider-head">
+            <label for="mental_sharpness">Mental Sharpness</label>
+            <span class="slider-value" id="mental_sharpnessValue">5</span>
+          </div>
+          <input id="mental_sharpness" type="range" min="0" max="10" value="5" oninput="updateValue('mental_sharpness')">
+          <div class="helper">0 = brain fog, 10 = highly focused</div>
+        </div>
+
+    <div class="slider-box">
+          <div class="slider-head">
+            <label for="direct_attention_fatigue">Direct Attention Fatigue</label>
+            <span class="slider-value" id="direct_attention_fatigueValue">5</span>
+          </div>
+          <input id="direct_attention_fatigue" type="range" min="0" max="10" value="5" oninput="updateValue('direct_attention_fatigue')">
+          <div class="helper">0 = fresh, 10 = completely overwhelmed</div>
+        </div>
       </div>
 
       <div class="nav">
@@ -108,6 +126,8 @@
         <div class="review-item"><strong>Workload</strong><span class="muted" id="reviewWorkload">5</span></div>
         <div class="review-item"><strong>Deadline proximity</strong><span class="muted" id="reviewDeadline">5</span></div>
         <div class="review-item"><strong>Understanding</strong><span class="muted" id="reviewUnderstanding">5</span></div>
+        <div class="review-item"><strong>Mental Sharpness</strong><span class="muted" id="reviewMentalSharpness">5</span></div>
+        <div class="review-item"><strong>Attention Fatigue</strong><span class="muted" id="reviewFatigue">5</span></div>
       </div>
 
       <div class="nav">
@@ -140,6 +160,7 @@
       <div class="result-box">
         <strong>Suggested action</strong>
         <div class="result-action" id="action">No result yet</div>
+        <p id="advice" style="margin-top: 8px; color: var(--text);"></p>
       </div>
 
       <div class="subcard">

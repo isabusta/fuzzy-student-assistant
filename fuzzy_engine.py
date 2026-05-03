@@ -28,6 +28,16 @@ class FuzzySystem:
                 "medium": triangular(x, 2, 5, 8),
                 "high": trapezoidal(x, 6, 8, 10, 10),
             },
+            "mental_sharpness": {
+                "low": trapezoidal(x, 0, 0, 2, 4),
+                "medium": triangular(x, 2, 5, 8),
+                "high": trapezoidal(x, 6, 8, 10, 10),
+            },
+            "direct_attention_fatigue":{
+                "low": trapezoidal(x, 0, 0, 2, 4),
+                "medium": triangular(x, 2, 5, 8),
+                "high": trapezoidal(x, 6, 8, 10, 10),
+            },
         }
         return sets[name]
 
@@ -69,15 +79,19 @@ class FuzzySystem:
         readiness_score = self.centroid(self.domain, readiness_agg)
 
         if study_score < 3.5:
-            action = "Restorative Break"
+            action = "Stop & Sleep"
+            advice = " Your cumulative workload and lack of energy have bottomed our your mental sharpness. You will not retain information efficiently now. Close the books, get some sleep, and let your brain consolidate what you've already learned"
         elif study_score < 6.5:
-            action = "Light Study"
+            action = "Restorative Break"
+            advice = "You are experiencing directed attention fatigue. Trying to study right now will be highly inefficient. Step away from your screen an do a indirect attention activity(strolling in nature, looking out of the window) to recover."
         else:
             action = "Study"
+            advice = " Your cognitive sharpness is intact right now. Dive into your study, but limit your session to avoid depleting your directed attention."
 
         return {
             "study_score": round(float(study_score), 2),
             "readiness_score": round(float(readiness_score), 2),
             "action": action,
+            "advice": advice,
             "fired_rules": fired_rules[:5]
         }

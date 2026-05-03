@@ -40,6 +40,8 @@ The current core model uses four input variables:
 2. **Workload**: light, moderate, heavy. 
 3. **Deadline proximity**: far, close, very close.
 4. **Understanding of material**: low, medium, high.
+5. **Mental sharpness**: low, medium, high.
+6. **Direct attention fatigue**: low, medium, high.
 
 ## Outputs
 
@@ -51,7 +53,7 @@ The system produces two main outputs:
 Depending on the interface version, the result may also be shown as a suggested action such as:
 
 - Take a restorative break
-- Light study / review
+- Sleep
 - Focused study session
 
 ## Method
@@ -67,9 +69,11 @@ Main components:
 
 Example fuzzy rules include:
 
-- IF deadline is very close AND understanding is low THEN recommendation is strongly study.
-- IF tiredness is high AND deadline is far THEN recommendation is take a break. 
-- IF understanding is high AND workload is light THEN readiness is high. 
+- IF Directed Attention Fatigue is High AND Task Urgency is high THEN Take a Restorative Break
+- IF mental sharpness is Low AND deadline is Far THEN Stop and Sleep"
+- IF mental sharpness is Low AND deadline is Far THEN Stop and Sleep"
+- IF mental sharpness is Low AND deadline is Far THEN Stop and Sleep"
+- IF mental sharpness is Low AND deadline is Far THEN Stop and Sleep"
 
 ## Project structure
 

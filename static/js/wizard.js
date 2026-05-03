@@ -44,13 +44,15 @@ function fillReview() {
   document.getElementById("reviewWorkload").textContent = document.getElementById("workload").value;
   document.getElementById("reviewDeadline").textContent = document.getElementById("deadline").value;
   document.getElementById("reviewUnderstanding").textContent = document.getElementById("understanding").value;
+  document.getElementById("reviewMentalSharpness").textContent = document.getElementById("mental_sharpness").value;
+  document.getElementById("reviewFatigue").textContent = document.getElementById("direct_attention_fatigue").value;
 }
 
 function resetWizard() {
   document.getElementById("courses").value = "";
   document.getElementById("deadlines").value = "";
 
-  ["tiredness", "workload", "deadline", "understanding"].forEach(id => {
+  ["tiredness", "workload", "deadline", "understanding", "mental_sharpness", "direct_attention_fatigue"].forEach(id => {
     document.getElementById(id).value = 5;
     updateValue(id);
   });
@@ -58,11 +60,15 @@ function resetWizard() {
   document.getElementById("studyScore").textContent = "--";
   document.getElementById("readinessScore").textContent = "--";
   document.getElementById("action").textContent = "No result yet";
+
+  if (document.getElementById("advice")){
+    document.getElementById("advice").textContent = "";
+  }
   document.getElementById("rules").innerHTML = "<li>No rules yet.</li>";
 
   goToWindow(0);
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  ["tiredness", "workload", "deadline", "understanding"].forEach(updateValue);
+  ["tiredness", "workload", "deadline", "understanding", "mental_sharpness", "direct_attention_fatigue"].forEach(updateValue);
 });

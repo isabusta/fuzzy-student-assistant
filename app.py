@@ -16,7 +16,9 @@ def evaluate():
         "tiredness": float(data["tiredness"]),
         "workload": float(data["workload"]),
         "deadline": float(data["deadline"]),
-        "understanding": float(data["understanding"])
+        "understanding": float(data["understanding"]),
+        "mental_sharpness": float(data["mental_sharpness"]),
+        "direct_attention_fatigue": float(data["direct_attention_fatigue"]),
     }
 
     result = system.evaluate(inputs)
