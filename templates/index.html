@@ -86,7 +86,7 @@
           <div class="helper">0 = low, 10 = high</div>
         </div>
 
-    <div class="slider-box">
+        <div class="slider-box">
           <div class="slider-head">
             <label for="mental_sharpness">Mental Sharpness</label>
             <span class="slider-value" id="mental_sharpnessValue">5</span>
@@ -95,7 +95,7 @@
           <div class="helper">0 = brain fog, 10 = highly focused</div>
         </div>
 
-    <div class="slider-box">
+        <div class="slider-box">
           <div class="slider-head">
             <label for="direct_attention_fatigue">Direct Attention Fatigue</label>
             <span class="slider-value" id="direct_attention_fatigueValue">5</span>
@@ -168,6 +168,35 @@
         <ul class="rules" id="rules">
           <li>No rules yet.</li>
         </ul>
+      </div>
+
+      <!-- Task planner: only shown when action = Study -->
+      <div id="task-planner" style="display: none;">
+        <div class="subcard">
+          <h3>Plan your study session</h3>
+          <p class="window-intro" style="margin-bottom: 16px;">
+            You are in a good state to work. Add your tasks below and the system will use your current mental state to rank which one to tackle first.
+          </p>
+
+          <div id="task-list"></div>
+
+          <div style="display: flex; gap: 10px; margin-top: 14px; flex-wrap: wrap;">
+            <button class="btn-secondary" onclick="addTask()">+ Add task</button>
+            <button class="btn-primary" onclick="rankTasks()">Rank tasks</button>
+          </div>
+        </div>
+
+        <div class="subcard" id="task-ranking-card" style="display: none;">
+          <h3>Task priority ranking</h3>
+          <ul class="task-ranking-list" id="task-ranking"></ul>
+        </div>
+      </div>
+
+      <!-- Shown when action = Stop & Sleep or Restorative Break -->
+      <div id="rest-message" style="display: none;">
+        <div class="subcard rest-note">
+          <p id="rest-note-text"></p>
+        </div>
       </div>
 
       <div class="nav">
