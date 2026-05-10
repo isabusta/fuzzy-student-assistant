@@ -1,58 +1,68 @@
 RULES = [
-    #{
-    #    "if": [("deadline", "very_close"), ("understanding", "low")],
-    #    "then": {"study": "high", "readiness": "low"},
-    #   "text": "IF deadline is very close AND understanding is low THEN study strongly"
-    #},
-    #{
-    #    "if": [("tiredness", "high"), ("deadline", "far")],
-    #   "then": {"study": "low", "readiness": "medium"},
-    #    "text": "IF tiredness is high AND deadline is far THEN take a break"
-    #},
-    #{
-    #   "if": [("understanding", "high"), ("workload", "light")],
-    #    "then": {"study": "medium", "readiness": "high"},
-    #    "text": "IF understanding is high AND workload is light THEN readiness is high"
-    #}
+    {
+        "if": [("understanding", "high")],
+        "then": {"readiness": "high"},
+        "text": "IF understanding is high THEN readiness is high"
+    },
+    {
+        "if": [("understanding", "low")],
+        "then": {"readiness": "low"},
+        "text": "IF understanding is low THEN readiness is low"
+    },
+    {
+        "if": [("understanding", "medium"), ('deadline', 'far')],
+        "then": {"readiness": "medium"},
+        "text": "IF understanding is medium AND deadline is far THEN readiness is medium"
+    },
+    {
+        "if": [("understanding", "medium"), ('deadline','close')],
+        "then": {"readiness": "medium"},
+        "text": "IF understanding is medium AND deadline is close THEN readiness is medium"
+    },
+    {
+        "if": [("understanding", "medium"), ('deadline', 'very_close')],
+        "then": {"readiness": "low"},
+        "text": "IF understanding is medium and deadline is very close THEN readiness is low"
+    },
     {
         "if": [("direct_attention_fatigue", "high"), ("deadline", "very_close")],
-        "then": {"study": "medium", "readiness": "medium"},
-        "text": "IF Directed Attention Fatigue is High AND Deadline is Very Close THEN Take a Restorative Break"
+        "then": {"study": "medium"},
+        "text": "IF focus battery is low AND deadline is very close THEN take a restorative break"
     },
 
     {
         "if": [("direct_attention_fatigue", "high"), ("deadline", "close")],
-        "then": {"study": "medium", "readiness": "medium"},
-        "text": "IF Directed Attention Fatigue is High AND Deadline is Close THEN Take a Restorative Break"
+        "then": {"study": "medium"},
+        "text": "IF focus battery is low AND deadline is close THEN take a restorative break"
     },
 
     {
         "if": [("mental_sharpness", "low"), ("deadline", "far")],
-        "then": {"study": "low", "readiness": "low"},
-        "text": "IF mental sharpness is Low AND deadline is Far THEN Stop and Sleep"
+        "then": {"study": "low"},
+        "text": "IF mental capacity is low AND deadline is far THEN stop and sleep"
     },
     {   "if": [("mental_sharpness", "low"), ("deadline", "close")],
-        "then": {"study": "low", "readiness": "low"},
-        "text": "IF Mental Sharpness is Low AND Deadline is Close THEN Stop and Sleep"
+        "then": {"study": "low"},
+        "text": "IF mental capacity is low AND deadline is close THEN stop and sleep"
     },
     {   "if": [("mental_sharpness", "low"), ("deadline", "very_close")],
-        "then": {"study": "medium", "readiness": "low"},
-        "text": "IF Mental Sharpness is Low AND Deadline is Very Close is moderate THEN Stop forcing it, so light review only"
+        "then": {"study": "medium"},
+        "text": "IF mental capacity is low AND deadline is very close is moderate THEN stop forcing it, so light review only"
     },
     {
         "if": [("mental_sharpness", "high"), ("direct_attention_fatigue", "low")],
-        "then": {"study": "high", "readiness": "high"},
-        "text": "IF Mental Sharpness is High AND Directed Attention Fatigue is Low THEN Study"
+        "then": {"study": "high"},
+        "text": "IF mental capacity is high AND focus battery is high THEN study"
     },
     {
         "if": [("mental_sharpness", "medium"), ("direct_attention_fatigue", "low")],
-        "then": {"study": "high", "readiness": "medium"},
-        "text": "IF Mental Sharpness is High AND Directed Attention Fatigue is Low THEN Study"
+        "then": {"study": "high"},
+        "text": "IF mental capacity is high AND focus battery is high THEN Study"
     },
     {
         "if": [("mental_sharpness", "medium"), ("direct_attention_fatigue", "medium")],
-        "then": {"study": "medium", "readiness": "medium"},
-        "text": "IF State is average THEN do standard, paced study session"
+        "then": {"study": "medium"},
+        "text": "IF state is average THEN do standard, paced study session"
     }
 
 ]

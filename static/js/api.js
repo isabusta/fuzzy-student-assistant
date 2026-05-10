@@ -1,10 +1,10 @@
 async function runAndOpenResults() {
+  const batteryValue = document.getElementById("direct_attention_fatigue").value;
   const payload = {
     tiredness: document.getElementById("tiredness").value,
-    workload: document.getElementById("workload").value,
     deadline: document.getElementById("deadline").value,
     mental_sharpness: document.getElementById("mental_sharpness").value,
-    direct_attention_fatigue: document.getElementById("direct_attention_fatigue").value,
+    direct_attention_fatigue: 10 - batteryValue,
     understanding: document.getElementById("understanding").value,
     courses: document.getElementById("courses").value,
     deadlines: document.getElementById("deadlines").value

@@ -13,11 +13,6 @@ class FuzzySystem:
                 "medium": triangular(x, 2, 5, 8),
                 "high": trapezoidal(x, 6, 8, 10, 10),
             },
-            "workload": {
-                "light": trapezoidal(x, 0, 0, 2, 4),
-                "moderate": triangular(x, 2, 5, 8),
-                "heavy": trapezoidal(x, 6, 8, 10, 10),
-            },
             "deadline": {
                 "far": trapezoidal(x, 0, 0, 2, 4),
                 "close": triangular(x, 3, 5, 7),
@@ -65,25 +60,29 @@ class FuzzySystem:
 
             if activation > 0:
                 fired_rules.append({
-                    "rule": rule["text"],
+                    "rule": rule.get("text", "Unnamed Rule"),
                     "activation": round(float(activation), 3)
                 })
 
             for i, x in enumerate(self.domain):
-                study_mu = min(activation, self.output_membership(rule["then"]["study"], x))
-                ready_mu = min(activation, self.output_membership(rule["then"]["readiness"], x))
-                study_agg[i] = max(study_agg[i], study_mu)
-                readiness_agg[i] = max(readiness_agg[i], ready_mu)
+
+                if "study" in rule["then"]:
+                    study_mu = min(activation, self.output_membership(rule["then"]["study"], x))
+                    study_agg[i] = max(study_agg[i], study_mu)
+
+                if "readiness" in rule["then"]:
+                    ready_mu = min(activation, self.output_membership(rule["then"]["readiness"], x))
+                    readiness_agg[i] = max(readiness_agg[i], ready_mu)
 
         study_score = self.centroid(self.domain, study_agg)
         readiness_score = self.centroid(self.domain, readiness_agg)
 
         if study_score < 3.5:
             action = "Stop & Sleep"
-            advice = " Your cumulative workload and lack of energy have bottomed our your mental sharpness. You will not retain information efficiently now. Close the books, get some sleep, and let your brain consolidate what you've already learned"
+            advice = " Your Mental Capacity is depleted. You will not retain information efficiently now. Close the books, get some sleep, and let your brain consolidate what you've already learned"
         elif study_score < 6.5:
             action = "Restorative Break"
-            advice = "You are experiencing directed attention fatigue. Trying to study right now will be highly inefficient. Step away from your screen an do a indirect attention activity(strolling in nature, looking out of the window) to recover."
+            advice = "Your Focus Battery is low. Trying to study right now will be highly inefficient. Step away from your screen an do a indirect attention activity(strolling in nature, looking out of the window) to recover."
         else:
             action = "Study"
             advice = " Your cognitive sharpness is intact right now. Dive into your study, but limit your session to avoid depleting your directed attention."

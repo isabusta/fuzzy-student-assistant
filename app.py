@@ -15,7 +15,6 @@ def evaluate():
     data = request.json
     inputs = {
         "tiredness": float(data["tiredness"]),
-        "workload": float(data["workload"]),
         "deadline": float(data["deadline"]),
         "understanding": float(data["understanding"]),
         "mental_sharpness": float(data["mental_sharpness"]),

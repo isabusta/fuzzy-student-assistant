@@ -40,7 +40,6 @@ function fillReview() {
   document.getElementById("reviewDeadlines").textContent =
     document.getElementById("deadlines").value.trim() || "Not provided";
   document.getElementById("reviewTiredness").textContent = document.getElementById("tiredness").value;
-  document.getElementById("reviewWorkload").textContent = document.getElementById("workload").value;
   document.getElementById("reviewDeadline").textContent = document.getElementById("deadline").value;
   document.getElementById("reviewUnderstanding").textContent = document.getElementById("understanding").value;
   document.getElementById("reviewMentalSharpness").textContent = document.getElementById("mental_sharpness").value;
@@ -119,7 +118,7 @@ function resetWizard() {
   document.getElementById("courses").value = "";
   document.getElementById("deadlines").value = "";
 
-  ["tiredness", "workload", "deadline", "understanding", "mental_sharpness", "direct_attention_fatigue"].forEach(id => {
+  ["tiredness", "deadline", "understanding", "mental_sharpness", "direct_attention_fatigue"].forEach(id => {
     document.getElementById(id).value = 5;
     updateValue(id);
   });
@@ -145,5 +144,5 @@ function resetWizard() {
 }
 
 window.addEventListener("DOMContentLoaded", () => {
-  ["tiredness", "workload", "deadline", "understanding", "mental_sharpness", "direct_attention_fatigue"].forEach(updateValue);
+  ["tiredness", "deadline", "understanding", "mental_sharpness", "direct_attention_fatigue"].forEach(updateValue);
 });

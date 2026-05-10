@@ -47,7 +47,7 @@
 
     <section class="window" id="window-1">
       <h2>Study inputs</h2>
-      <p class="window-intro">Enter the 6 core fuzzy inputs.</p>
+      <p class="window-intro">Enter the 5 core fuzzy inputs.</p>
 
       <div class="card-grid">
         <div class="slider-box">
@@ -57,15 +57,6 @@
           </div>
           <input id="tiredness" type="range" min="0" max="10" value="5" oninput="updateValue('tiredness')">
           <div class="helper">0 = rested, 10 = exhausted</div>
-        </div>
-
-        <div class="slider-box">
-          <div class="slider-head">
-            <label for="workload">Workload</label>
-            <span class="slider-value" id="workloadValue">5</span>
-          </div>
-          <input id="workload" type="range" min="0" max="10" value="5" oninput="updateValue('workload')">
-          <div class="helper">0 = light, 10 = heavy</div>
         </div>
 
         <div class="slider-box">
@@ -88,20 +79,20 @@
 
         <div class="slider-box">
           <div class="slider-head">
-            <label for="mental_sharpness">Mental Sharpness</label>
+            <label for="mental_sharpness">Mental Capacity</label>
             <span class="slider-value" id="mental_sharpnessValue">5</span>
           </div>
           <input id="mental_sharpness" type="range" min="0" max="10" value="5" oninput="updateValue('mental_sharpness')">
-          <div class="helper">0 = brain fog, 10 = highly focused</div>
+          <div class="helper">0 = Low energy, 10 = Full cognitive capacity</div>
         </div>
 
         <div class="slider-box">
           <div class="slider-head">
-            <label for="direct_attention_fatigue">Direct Attention Fatigue</label>
+            <label for="direct_attention_fatigue">Focus Battery</label>
             <span class="slider-value" id="direct_attention_fatigueValue">5</span>
           </div>
           <input id="direct_attention_fatigue" type="range" min="0" max="10" value="5" oninput="updateValue('direct_attention_fatigue')">
-          <div class="helper">0 = fresh, 10 = completely overwhelmed</div>
+          <div class="helper">0 = Empty(Overwhelmed), 10 = Full(Fresh)</div>
         </div>
       </div>
 
@@ -123,11 +114,10 @@
         <div class="review-item"><strong>Courses</strong><span class="muted" id="reviewCourses">Not provided</span></div>
         <div class="review-item"><strong>Deadlines</strong><span class="muted" id="reviewDeadlines">Not provided</span></div>
         <div class="review-item"><strong>Tiredness</strong><span class="muted" id="reviewTiredness">5</span></div>
-        <div class="review-item"><strong>Workload</strong><span class="muted" id="reviewWorkload">5</span></div>
         <div class="review-item"><strong>Deadline proximity</strong><span class="muted" id="reviewDeadline">5</span></div>
         <div class="review-item"><strong>Understanding</strong><span class="muted" id="reviewUnderstanding">5</span></div>
-        <div class="review-item"><strong>Mental Sharpness</strong><span class="muted" id="reviewMentalSharpness">5</span></div>
-        <div class="review-item"><strong>Attention Fatigue</strong><span class="muted" id="reviewFatigue">5</span></div>
+        <div class="review-item"><strong>Mental Capacity</strong><span class="muted" id="reviewMentalSharpness">5</span></div>
+        <div class="review-item"><strong>Focus Battery</strong><span class="muted" id="reviewFatigue">5</span></div>
       </div>
 
       <div class="nav">
