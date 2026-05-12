@@ -4,6 +4,7 @@ A fuzzy logic-based decision-support tool that helps students decide whether the
 
 This project was developed as a Design Science Research artifact and implements a Mamdani Fuzzy Inference System in Python. The system is designed to support study decisions under uncertainty by using vague, human-like inputs such as tiredness, workload, deadline proximity, and understanding of the material. 
 
+You can access the web app here: https://fuzzy-tutorial-productivity-assistant.onrender.com
 ## Project idea
 
 Students often make study decisions using subjective thoughts such as:
